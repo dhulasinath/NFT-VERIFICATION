@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CertifyChain - Academic Credentials</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"></script>
+  <script src="https://unpkg.com/web3.storage/dist/bundle.min.js"></script>
+</head>
+<body>
+
+<div class="sidebar">
+  <h2>🎓 CertifyChain</h2>
+  <button onclick="showSection('home')">🏠 Home</button>
+  <button onclick="showSection('tenth')">10th Certificate</button>
+  <button onclick="showSection('twelfth')">12th Certificate</button>
+  <button onclick="showSection('diploma')">Diploma Certificate</button>
+  <button onclick="showSection('college')">College Certificate</button>
+  <button onclick="showSection('verify')">✅ Verify</button>
+  <button onclick="showSection('dashboard')">📂 Dashboard</button>
+  <button onclick="connectWallet()">🔗 Connect Wallet</button>
+</div>
+
+<div class="content">
+  <!-- Home -->
+  <section id="home" class="active">
+    <h1>Welcome to CertifyChain</h1>
+    <p>Issue, store, and verify academic credentials securely on Ethereum blockchain.</p>
+    <div class="card-container">
+      <div class="dashboard-card" onclick="showSection('tenth')">
+        <img src="https://img.icons8.com/fluency/48/000000/school.png" alt="10th" class="card-icon" />
+        <h3>10th Certificate</h3>
+      </div>
+      <div class="dashboard-card" onclick="showSection('twelfth')">
+        <img src="https://img.icons8.com/fluency/48/000000/library.png" alt="12th" class="card-icon" />
+        <h3>12th Certificate</h3>
+      </div>
+      <div class="dashboard-card" onclick="showSection('diploma')">
+        <img src="https://img.icons8.com/fluency/48/000000/diploma.png" alt="Diploma" class="card-icon" />
+        <h3>Diploma Certificate</h3>
+      </div>
+      <div class="dashboard-card" onclick="showSection('college')">
+        <img src="https://img.icons8.com/fluency/48/000000/graduation-cap.png" alt="College" class="card-icon" />
+        <h3>College Certificate</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10th Certificate Form -->
+  <section id="tenth">
+    <h1>
+      <img src="https://img.icons8.com/fluency/32/000000/school.png" alt="10th" class="inline-icon" />
+      Issue 10th Certificate
+    </h1>
+    <label>Register Number</label><input id="regNumber10th" />
+    <label>Name</label><input id="studentName10th" />
+    <label>DOB</label><input type="date" id="dob10th" />
+    <label>Wallet Address</label><input id="studentAddress10th" />
+    <button class="action" onclick="issueCert('10th')">Submit</button>
+    <div id="10thResult"></div>
+  </section>
+
+  <!-- 12th Certificate Form -->
+  <section id="twelfth">
+    <h1>
+      <img src="https://img.icons8.com/fluency/32/000000/library.png" alt="12th" class="inline-icon" />
+      Issue 12th Certificate
+    </h1>
+    <label>Register Number</label><input id="regNumber12th" />
+    <label>Name</label><input id="studentName12th" />
+    <label>DOB</label><input type="date" id="dob12th" />
+    <label>Wallet Address</label><input id="studentAddress12th" />
+    <button class="action" onclick="issueCert('12th')">Submit</button>
+    <div id="12thResult"></div>
+  </section>
+
+  <!-- Diploma Certificate Form -->
+  <section id="diploma">
+    <h1>
+      <img src="https://img.icons8.com/fluency/32/000000/diploma.png" alt="Diploma" class="inline-icon" />
+      Issue Diploma Certificate
+    </h1>
+    <label>Diploma Number</label><input id="diplomaNumber" />
+    <label>Name</label><input id="studentNameDiploma" />
+    <label>Department</label><input id="departmentDiploma" />
+    <label>DOB</label><input type="date" id="dobDiploma" />
+    <label>Wallet Address</label><input id="studentAddressDiploma" />
+    <button class="action" onclick="issueCert('diploma')">Submit</button>
+    <div id="diplomaResult"></div>
+  </section>
+
+  <!-- College Certificate Form -->
+  <section id="college">
+    <h1>
+      <img src="https://img.icons8.com/fluency/32/000000/graduation-cap.png" alt="College" class="inline-icon" />
+      Issue College Certificate
+    </h1>
+    <label>Roll Number</label><input id="rollNumberCollege" />
+    <label>Name</label><input id="studentNameCollege" />
+    <label>Degree Title</label><input id="degreeTitleCollege" />
+    <label>Department</label><input id="departmentCollege" />
+    <label>DOB</label><input type="date" id="dobCollege" />
+    
+    <button class="action" onclick="issueCert('college')">Submit</button>
+    <div id="collegeResult"></div>
+  </section>
+
+  <!-- Verify Section -->
+  <section id="verify">
+    <h1>
+      <img src="https://img.icons8.com/fluency/32/000000/verified-badge.png" alt="Verify" class="inline-icon" />
+      Verify Credential
+    </h1>
+    <input id="verifyTokenId" placeholder="Token ID" type="number" />
+    <button class="action" onclick="verifyCredential()">Verify</button>
+    <div id="verifyResult"></div>
+  </section>
+
+  <!-- Dashboard Section -->
+  <section id="dashboard">
+    <h1>
+      <img src="https://img.icons8.com/fluency/32/000000/username.png" alt="Dashboard" class="inline-icon" />
+      My Credentials
+    </h1>
+    <button class="action" onclick="loadMyCredentials()">Load Credentials</button>
+    <div id="myCredentials"></div>
+  </section>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
